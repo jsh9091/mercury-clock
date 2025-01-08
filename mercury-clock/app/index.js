@@ -31,13 +31,13 @@ import { battery } from "power";
 import { preferences, units } from "user-settings";
 
 /**
- * Receive and process new tempature data. 
+ * Receive and process new tempature data.
  */
-newfile.initialize(data => {
-    if (appbit.permissions.granted("access_location")) {
-      
-      console.log(`It's ${data.temperature}\u00B0 ${data.unit} and ${data.condition} (${data.conditionCode}) in ${data.location}`);
-    } else {
-      console.log("----");
-    }
-  });
+newfile.initialize((data) => {
+  if (appbit.permissions.granted("access_location")) {
+    console.log(`It's ${data.temperature}\u00B0 ${data.unit} and ${data.condition} (${data.conditionCode}) in ${data.location}`);
+    
+  } else {
+    console.log("----");
+  }
+});

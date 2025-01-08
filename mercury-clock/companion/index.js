@@ -27,34 +27,36 @@ import { me as companion } from "companion";
 import { outbox } from "file-transfer";
 import { weather, WeatherCondition } from "weather";
 import { dataFile, wakeTime } from "../common/constants";
-//import { findWeatherConditionName } from "../common/utils";
 
 /**
- * Update tempature data from phone. 
+ * Update tempature data from phone.
  */
 function refreshData() {
-    weather
-      .getWeatherData()
-      .then((data) => {
-         if (data.locations.length > 0) {
-          sendData({
-            temperature: Math.floor(data.locations[0].currentWeather.temperature),
-            condition: findWeatherConditionName(WeatherCondition, data.locations[0].currentWeather.weatherCondition),
-            conditionCode: data.locations[0].currentWeather.weatherCondition,
-            location: data.locations[0].name,
-            unit: data.temperatureUnit
-          });
-        } else {
-          console.warn("No data for this location.")
-        }
-      })
-      .catch((ex) => {
-        console.error(ex);
-      });
-  }
+  weather
+    .getWeatherData()
+    .then((data) => {
+      if (data.locations.length > 0) {
+        sendData({
+          temperature: Math.floor(data.locations[0].currentWeather.temperature),
+          condition: findWeatherConditionName(
+            WeatherCondition,
+            data.locations[0].currentWeather.weatherCondition
+          ),
+          conditionCode: data.locations[0].currentWeather.weatherCondition,
+          location: data.locations[0].name,
+          unit: data.temperatureUnit,
+        });
+      } else {
+        console.warn("No data for this location.");
+      }
+    })
+    .catch((ex) => {
+      console.error(ex);
+    });
+}
 
 /**
- * Send data from phone to watch. 
+ * Send data from phone to watch.
  * @param {*} data
  */
 function sendData(data) {
@@ -63,12 +65,17 @@ function sendData(data) {
   });
 }
 
+/**
+ * Parses weather condition text.
+ * @param {*} WeatherCondition
+ * @param {*} conditionCode
+ * @returns
+ */
 function findWeatherConditionName(WeatherCondition, conditionCode) {
-    
-    for (const condition of Object.keys(WeatherCondition)) {
-      if (conditionCode === WeatherCondition[condition]) return condition;
-    }
+  for (const condition of Object.keys(WeatherCondition)) {
+    if (conditionCode === WeatherCondition[condition]) return condition;
   }
+}
 
 if (companion.permissions.granted("access_location")) {
   // Refresh on companion launch
