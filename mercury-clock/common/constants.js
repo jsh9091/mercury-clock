@@ -22,22 +22,7 @@
  * SOFTWARE.
  */
 
-import document from "document";
-import clock from "clock";
-import * as newfile from "./newfile";
-import { me as appbit } from "appbit";
-import { today as activity } from "user-activity";
-import { battery } from "power";
-import { preferences, units } from "user-settings";
-
-/**
- * Receive and process new tempature data. 
- */
-newfile.initialize(data => {
-    if (appbit.permissions.granted("access_location")) {
-      
-      console.log(`It's ${data.temperature}\u00B0 ${data.unit} and ${data.condition} (${data.conditionCode}) in ${data.location}`);
-    } else {
-      console.log("----");
-    }
-  });
+export const dataType = "cbor";
+export const dataFile = "weather.cbor";
+export const millisecondsPerMinute = 1000 * 60;
+export const wakeTime = 30 * millisecondsPerMinute;
