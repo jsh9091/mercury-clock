@@ -30,14 +30,85 @@ import { today as activity } from "user-activity";
 import { battery } from "power";
 import { preferences, units } from "user-settings";
 
+
+// Update the clock every minute
+clock.granularity = "minutes";
+
+// Get a handle on the <text> elements
+const stepCountLabel = document.getElementById("stepCountLabel");
+const batteryLabel = document.getElementById("batteryLabel");
+const locationLabel = document.getElementById("locationLabel");
+const conditionLabel = document.getElementById("conditionLabel");
+const celsiusLabel = document.getElementById("celsiusLabel");
+const fahrenheitLabel = document.getElementById("fahrenheitLabel");
+
 /**
  * Receive and process new tempature data.
  */
 newfile.initialize((data) => {
   if (appbit.permissions.granted("access_location")) {
     console.log(`It's ${data.temperature}\u00B0 ${data.unit} and ${data.condition} (${data.conditionCode}) in ${data.location}`);
-    
+
+    locationLabel.text = data.location;
+    conditionLabel.text = data.condition;
+    celsiusLabel.text = data.temperature;
+    fahrenheitLabel.text = toFahrenheit(data);
   } else {
     console.log("----");
   }
 });
+
+/**
+* Convert temperature value to Fahrenheit
+* @param {object} data WeatherData
+*/
+function toFahrenheit(data) {
+
+  return Math.round((data.temperature * 1.8) + 32)
+}
+
+/**
+ * Update the display of clock values.
+ * @param {*} evt 
+ */
+clock.ontick = (evt) => {
+  // handle case of user permission for step counts is not there
+  if (appbit.permissions.granted("access_activity")) {
+    stepCountLabel.text = getSteps().formatted;
+  } else {
+    stepCountLabel.text = "-----";
+  }
+
+  updateBattery();
+}
+
+/**
+ * Gets and formats user step count for the day.
+ * @returns 
+ */
+function getSteps() {
+  let val = activity.adjusted.steps || 0;
+  return {
+    raw: val,
+    formatted:
+      val > 999
+        ? `${Math.floor(val / 1000)},${("00" + (val % 1000)).slice(-3)}`
+        : val,
+  };
+}
+
+/**
+ * Updates the battery battery icon and label.
+ */
+function updateBattery() {
+  updateBatteryLabel();
+  //updateBatteryIcon(); // TODO
+}
+
+/**
+ * Updates the battery lable GUI for battery percentage. 
+ */
+function updateBatteryLabel() {
+  let percentSign = "&#x25";
+  batteryLabel.text = battery.chargeLevel + percentSign;
+}
