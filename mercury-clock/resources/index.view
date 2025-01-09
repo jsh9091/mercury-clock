@@ -1,3 +1,9 @@
 <svg>
-  <rect id="background" />
+  <gradientRect width="100%" height="100%"
+    gradient-type="linear"
+    gradient-x1="0" gradient-y1="50"
+    gradient-x2="0" gradient-y2="100%-50"
+    gradient-color1="#191970" gradient-color2="#4169E1" />
+
+  <image id="thermIcon" href="thermometer.png" />
 </svg>
