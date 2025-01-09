@@ -47,3 +47,15 @@
   y: "250";
   text-anchor: middle;
 }
+
+#celsiusLabel {
+  x: "75";
+  y: "312";
+  text-anchor: middle;
+}
+
+#fahrenheitLabel {
+  x: "264";
+  y: "312";
+  text-anchor: middle;
+}
