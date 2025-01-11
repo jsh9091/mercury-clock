@@ -66,38 +66,38 @@
   text-length: 80;
   text-anchor: end;
   x: 50%;
-  y: 55%;
+  y: 61%;
   text-anchor: middle;
   fill: #87CEEB
 }
 
 #thermIcon {
   x: "29";
-  y: 60%;
+  y: 65%;
   width: "280";
   height: "140" 
 }
 
 #celsiusColLabel {
   x: "91";
-  y: "250";
+  y: "259";
   text-anchor: middle;
 }
 
 #fahrenheitColLabel {
   x: "245";
-  y: "250";
+  y: "259";
   text-anchor: middle;
 }
 
 #celsiusLabel {
   x: "75";
-  y: "317";
+  y: "312";
   text-anchor: middle;
 }
 
 #fahrenheitLabel {
   x: "264";
-  y: "317";
+  y: "312";
   text-anchor: middle;
 }
