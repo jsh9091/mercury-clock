@@ -59,6 +59,25 @@
   y: 24%;
   fill: #87CEEB
 }
+#clockLabel {
+  font-size: 85;
+  font-family: System-Bold;
+  text-length: 80;
+  text-anchor: middle;
+  x: 50%-5;
+  y: 49%;
+  fill: #87CEEB;
+}
+
+#amPmLabel {
+  font-size: 30;
+  font-family: System-Bold;
+  text-length: 30;
+  text-anchor: end;
+  x: 100%-15;
+  y: 49%;
+  fill: #87CEEB;
+}
 
 #conditionLabel {
   font-size: 30;

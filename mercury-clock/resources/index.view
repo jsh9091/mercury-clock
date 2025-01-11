@@ -28,11 +28,14 @@
     gradient-x2="0" gradient-y2="100%-50"
     gradient-color1="#191970" gradient-color2="#4169E1" />
 
+  <text id="locationLabel" />
+
   <text id="stepCountLabel" />
   <text id="batteryLabel" />
 
-  <text id="locationLabel" />
-
+  <text id="clockLabel" />
+  <text id="amPmLabel" />
+  
   <text id="conditionLabel" />
 
   <image id="thermIcon" href="thermometer.png" />

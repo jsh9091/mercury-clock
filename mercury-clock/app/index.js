@@ -38,6 +38,8 @@ clock.granularity = "minutes";
 const stepCountLabel = document.getElementById("stepCountLabel");
 const batteryLabel = document.getElementById("batteryLabel");
 const locationLabel = document.getElementById("locationLabel");
+const clockLabel = document.getElementById("clockLabel");
+const amPmLabel = document.getElementById("amPmLabel");
 const conditionLabel = document.getElementById("conditionLabel");
 const celsiusLabel = document.getElementById("celsiusLabel");
 const fahrenheitLabel = document.getElementById("fahrenheitLabel");
@@ -79,8 +81,24 @@ clock.ontick = (evt) => {
     stepCountLabel.text = "-----";
   }
 
+  // get time information from API
+  let todayDate = evt.date;
+  let rawHours = todayDate.getHours();
+
+  // 12 hour format
+  let hours = rawHours % 12 || 12;
+
+  let mins = todayDate.getMinutes();
+  let displayMins = zeroPad(mins);
+
+  // display time on main clock
+  clockLabel.text = `${hours}:${displayMins}`;
+
+  // AM / PM indicator
+  amPmLabel.text = rawHours >= 12 ? "PM" : "AM";
+
   updateBattery();
-}
+};
 
 /**
  * Gets and formats user step count for the day.
@@ -95,6 +113,18 @@ function getSteps() {
         ? `${Math.floor(val / 1000)},${("00" + (val % 1000)).slice(-3)}`
         : val,
   };
+}
+
+/**
+ * Front appends a zero to an integer if less than ten.
+ * @param {*} i 
+ * @returns 
+ */
+function zeroPad(i) {
+  if (i < 10) {
+    i = "0" + i;
+  }
+  return i;
 }
 
 /**
