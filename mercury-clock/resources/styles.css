@@ -69,6 +69,16 @@
   fill: #87CEEB;
 }
 
+#clockShadow {
+  font-size: 85;
+  font-family: System-Bold;
+  text-length: 80;
+  text-anchor: middle;
+  x: 50%-5+4;
+  y: 49%+4;
+  fill: black;
+}
+
 #amPmLabel {
   font-size: 30;
   font-family: System-Bold;
@@ -119,4 +129,5 @@
   x: "264";
   y: "312";
   text-anchor: middle;
+  
 }

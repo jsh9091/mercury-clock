@@ -39,6 +39,7 @@ const stepCountLabel = document.getElementById("stepCountLabel");
 const batteryLabel = document.getElementById("batteryLabel");
 const locationLabel = document.getElementById("locationLabel");
 const clockLabel = document.getElementById("clockLabel");
+const clockShadow = document.getElementById("clockShadow");
 const amPmLabel = document.getElementById("amPmLabel");
 const conditionLabel = document.getElementById("conditionLabel");
 const celsiusLabel = document.getElementById("celsiusLabel");
@@ -124,6 +125,7 @@ function updateTimeDisplay(evt) {
 
   // display time on main clock
   clockLabel.text = `${hours}:${displayMins}`;
+  clockShadow.text = clockLabel.text;
 
   // AM / PM indicator
   amPmLabel.text = rawhours >= 12 ? "PM" : "AM";

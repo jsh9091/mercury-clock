@@ -33,9 +33,10 @@
   <text id="stepCountLabel" />
   <text id="batteryLabel" />
 
+  <text id="clockShadow" opacity="0.6" />
   <text id="clockLabel" />
   <text id="amPmLabel" />
-  
+
   <text id="conditionLabel" />
 
   <image id="thermIcon" href="thermometer.png" />
