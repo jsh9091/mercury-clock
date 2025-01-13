@@ -37,11 +37,11 @@ clock.granularity = "minutes";
 // Get a handle on the <text> elements
 const stepCountLabel = document.getElementById("stepCountLabel");
 const batteryLabel = document.getElementById("batteryLabel");
-const locationLabel = document.getElementById("locationLabel");
+const conditionLabel = document.getElementById("conditionLabel");
 const clockLabel = document.getElementById("clockLabel");
 const clockShadow = document.getElementById("clockShadow");
 const amPmLabel = document.getElementById("amPmLabel");
-const conditionLabel = document.getElementById("conditionLabel");
+const locationLabel = document.getElementById("locationLabel");
 const celsiusLabel = document.getElementById("celsiusLabel");
 const fahrenheitLabel = document.getElementById("fahrenheitLabel");
 
@@ -52,8 +52,8 @@ newfile.initialize((data) => {
   if (appbit.permissions.granted("access_location")) {
     console.log(`It's ${data.temperature}\u00B0 ${data.unit} and ${data.condition} (${data.conditionCode}) in ${data.location}`);
 
-    locationLabel.text = data.location;
-    conditionLabel.text = data.condition;
+    conditionLabel.text = truncate(data.condition, 8);
+    locationLabel.text = truncate(data.location, 12);
     celsiusLabel.text = data.temperature;
     fahrenheitLabel.text = toFahrenheit(data);
   } else {
@@ -157,4 +157,19 @@ function updateBattery() {
 function updateBatteryLabel() {
   let percentSign = "&#x25";
   batteryLabel.text = battery.chargeLevel + percentSign;
+}
+
+/**
+ * Checks if the length of a string is longer than the given integer. 
+ * If the length is longer, then the string is truncated.
+ * @param {*} text 
+ * @param {*} length 
+ * @returns string
+ */
+function truncate(text, length) {
+  if (text.length > length) {
+    let ellipsis = '\u2026';
+    text = text.substring(0, length) + ellipsis;
+  }
+  return text;
 }
