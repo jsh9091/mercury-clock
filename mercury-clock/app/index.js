@@ -37,6 +37,7 @@ clock.granularity = "minutes";
 // Get a handle on the <text> elements
 const stepCountLabel = document.getElementById("stepCountLabel");
 const batteryLabel = document.getElementById("batteryLabel");
+const batteryIcon = document.getElementById("batteryIcon");
 const conditionLabel = document.getElementById("conditionLabel");
 const clockLabel = document.getElementById("clockLabel");
 const clockShadow = document.getElementById("clockShadow");
@@ -144,11 +145,20 @@ function zeroPad(i) {
 }
 
 /**
+ * Update the displayed battery level. 
+ * @param {*} charger 
+ * @param {*} evt 
+ */
+battery.onchange = (charger, evt) => {
+  updateBattery();
+};
+
+/**
  * Updates the battery battery icon and label.
  */
 function updateBattery() {
   updateBatteryLabel();
-  //updateBatteryIcon(); // TODO
+  updateBatteryIcon();
 }
 
 /**
@@ -157,6 +167,24 @@ function updateBattery() {
 function updateBatteryLabel() {
   let percentSign = "&#x25";
   batteryLabel.text = battery.chargeLevel + percentSign;
+}
+
+/**
+ * Updates what battery icon is displayed. 
+ */
+function updateBatteryIcon() {
+  const minFull = 70;
+  const minHalf = 30;
+  
+  if (battery.charging) {
+    batteryIcon.image = "battery-charging.png"
+  } else if (battery.chargeLevel > minFull) {
+    batteryIcon.image = "battery-full.png"
+  } else if (battery.chargeLevel < minFull && battery.chargeLevel > minHalf) {
+    batteryIcon.image = "battery-half.png"
+  } else if (battery.chargeLevel < minHalf) {
+    batteryIcon.image = "battery-low.png"
+  }
 }
 
 /**

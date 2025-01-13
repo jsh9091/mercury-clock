@@ -22,15 +22,19 @@
  * SOFTWARE.
  */
 
-#conditionLabel {
+ text {
   font-size: 30;
   font-family: System-Regular;
+  font-weight: regular;
+  fill: #87CEEB;
+}
+
+#conditionLabel {
   text-length: 80;
   text-anchor: end;
   x: 50%;
   y: 12%;
   text-anchor: middle;
-  fill: #87CEEB
 }
 
 #stepCountLabel {
@@ -43,8 +47,14 @@
   fill: #191970
 }
 
+#stepsIcon {
+  x: 5%;
+  y: 19%;
+  width: "35";
+  height: "25" 
+}
+
 #batteryLabel {
-  font-size: 30;
   font-family: System-Bold;
   text-length: 80;
   text-anchor: end;
@@ -52,6 +62,14 @@
   y: 25%;
   fill: #191970
 }
+
+#batteryIcon {
+  x: 84%;
+  y: 19%;
+  width: "35";
+  height: "20" 
+}
+
 #clockLabel {
   font-size: 85;
   font-family: System-Bold;
@@ -73,54 +91,56 @@
 }
 
 #amPmLabel {
-  font-size: 30;
   font-family: System-Bold;
   text-length: 30;
   text-anchor: end;
   x: 100%-15;
   y: 51%;
-  fill: #87CEEB;
 }
 
 #locationLabel {
-  font-size: 30;
-  font-family: System-Regular;
   text-length: 80;
   text-anchor: end;
   x: 50%;
-  y: 62%;
+  y: 63%;
   text-anchor: middle;
-  fill: #87CEEB
 }
 
 #thermIcon {
   x: "29";
-  y: "221";
+  y: "224";
   width: "280";
-  height: "140" 
+  height: "112" 
 }
 
 #celsiusColLabel {
   x: "91";
-  y: "262";
+  y: "266";
   text-anchor: middle;
+  fill: black;
+  font-size: 33;
+  font-family: System-Bold;
 }
 
 #fahrenheitColLabel {
   x: "245";
-  y: "262";
+  y: "266";
   text-anchor: middle;
+  fill: black;
+  font-size: 33;
+  font-family: System-Bold;
 }
 
 #celsiusLabel {
   x: "75";
-  y: "312";
+  y: "311";
   text-anchor: middle;
+  fill: black;
 }
 
 #fahrenheitLabel {
   x: "264";
-  y: "312";
+  y: "311";
   text-anchor: middle;
-  
+  fill: black;
 }
