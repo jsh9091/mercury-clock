@@ -81,21 +81,7 @@ clock.ontick = (evt) => {
     stepCountLabel.text = "-----";
   }
 
-  // get time information from API
-  let todayDate = evt.date;
-  let rawHours = todayDate.getHours();
-
-  // 12 hour format
-  let hours = rawHours % 12 || 12;
-
-  let mins = todayDate.getMinutes();
-  let displayMins = zeroPad(mins);
-
-  // display time on main clock
-  clockLabel.text = `${hours}:${displayMins}`;
-
-  // AM / PM indicator
-  amPmLabel.text = rawHours >= 12 ? "PM" : "AM";
+  updateTimeDisplay(evt);
 
   updateBattery();
 };
@@ -113,6 +99,34 @@ function getSteps() {
         ? `${Math.floor(val / 1000)},${("00" + (val % 1000)).slice(-3)}`
         : val,
   };
+}
+
+/**
+ * Updates display of time information. 
+ * @param {*} evt 
+ */
+function updateTimeDisplay(evt) {
+  // get time information from API
+  let todayDate = evt.date;
+  let rawhours = todayDate.getHours();
+  let hours = rawhours;
+
+  if (preferences.clockDisplay === "12h") {
+    // 12 hour format
+    hours = hours % 12 || 12;
+  } else {
+    // 24 hour format
+    hours = zeroPad(hours);
+  }
+
+  let mins = todayDate.getMinutes();
+  let displayMins = zeroPad(mins);
+
+  // display time on main clock
+  clockLabel.text = `${hours}:${displayMins}`;
+
+  // AM / PM indicator
+  amPmLabel.text = rawhours >= 12 ? "PM" : "AM";
 }
 
 /**
