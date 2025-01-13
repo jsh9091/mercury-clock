@@ -23,10 +23,11 @@
  */
 
 .defaultText {
-  font-size: 32;
+  font-size: 30;
   font-family: System-Regular;
   font-weight: regular;
   text-length: 32;
+  fill: #87CEEB
 }
 
 #conditionLabel {
@@ -42,22 +43,22 @@
 
 #stepCountLabel {
   font-size: 30;
-  font-family: System-Regular;
+  font-family: System-Bold;
   text-length: 80;
   text-anchor: start;
   x: 18%;
-  y: 24%;
-  fill: #87CEEB
+  y: 25%;
+  fill: #191970
 }
 
 #batteryLabel {
   font-size: 30;
-  font-family: System-Regular;
+  font-family: System-Bold;
   text-length: 80;
   text-anchor: end;
   x: 82%;
-  y: 24%;
-  fill: #87CEEB
+  y: 25%;
+  fill: #191970
 }
 #clockLabel {
   font-size: 85;
@@ -65,8 +66,8 @@
   text-length: 80;
   text-anchor: middle;
   x: 50%-5;
-  y: 49%;
-  fill: #87CEEB;
+  y: 50%;
+  fill: white;
 }
 
 #clockShadow {
@@ -75,7 +76,7 @@
   text-length: 80;
   text-anchor: middle;
   x: 50%-5+4;
-  y: 49%+4;
+  y: 50%+4;
   fill: black;
 }
 
@@ -85,7 +86,7 @@
   text-length: 30;
   text-anchor: end;
   x: 100%-15;
-  y: 49%;
+  y: 50%;
   fill: #87CEEB;
 }
 
@@ -95,27 +96,27 @@
   text-length: 80;
   text-anchor: end;
   x: 50%;
-  y: 61%;
+  y: 62%;
   text-anchor: middle;
   fill: #87CEEB
 }
 
 #thermIcon {
   x: "29";
-  y: 65%;
+  y: "221";
   width: "280";
   height: "140" 
 }
 
 #celsiusColLabel {
   x: "91";
-  y: "259";
+  y: "262";
   text-anchor: middle;
 }
 
 #fahrenheitColLabel {
   x: "245";
-  y: "259";
+  y: "262";
   text-anchor: middle;
 }
 

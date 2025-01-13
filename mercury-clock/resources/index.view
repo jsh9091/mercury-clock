@@ -30,6 +30,8 @@
 
     <text id="conditionLabel" />
     
+    <rect x="0" y="17%" width="100%" height="11%" fill="#87CEEB" />
+    
     <text id="stepCountLabel" />
     <text id="batteryLabel" />
     
