@@ -51,8 +51,6 @@ const fahrenheitLabel = document.getElementById("fahrenheitLabel");
  */
 newfile.initialize((data) => {
   if (appbit.permissions.granted("access_location")) {
-    console.log(`It's ${data.temperature}\u00B0 ${data.unit} and ${data.condition} (${data.conditionCode}) in ${data.location}`);
-
     conditionLabel.text = truncate(data.condition, 8);
     locationLabel.text = truncate(data.location, 12);
     celsiusLabel.text = data.temperature;
