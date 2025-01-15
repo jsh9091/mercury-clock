@@ -28,8 +28,7 @@ import * as newfile from "./newfile";
 import { me as appbit } from "appbit";
 import { today as activity } from "user-activity";
 import { battery } from "power";
-import { preferences, units } from "user-settings";
-
+import { preferences } from "user-settings";
 
 // Update the clock every minute
 clock.granularity = "minutes";
@@ -50,13 +49,20 @@ const fahrenheitLabel = document.getElementById("fahrenheitLabel");
  * Receive and process new tempature data.
  */
 newfile.initialize((data) => {
+  // fresh weather file received
   if (appbit.permissions.granted("access_location")) {
-    conditionLabel.text = truncate(data.condition, 8);
+
+    //conditionLabel.text = `${data.condition}`;
     locationLabel.text = truncate(data.location, 12);
-    celsiusLabel.text = data.temperature;
+    celsiusLabel.text = `${data.temperature}`;
     fahrenheitLabel.text = toFahrenheit(data);
+
   } else {
     console.log("----");
+    conditionLabel.text = "----";
+    locationLabel.text = "----";
+    celsiusLabel.text = "--";
+    fahrenheitLabel.text = "--";
   }
 });
 
