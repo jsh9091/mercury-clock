@@ -25,7 +25,7 @@
 import * as cbor from "cbor";
 import { me as companion } from "companion";
 import { outbox } from "file-transfer";
-import { weather, WeatherCondition } from "weather";
+import { weather } from "weather";
 import { dataFile, wakeTime } from "../common/constants";
 
 /**
@@ -38,10 +38,7 @@ function refreshData() {
       if (data.locations.length > 0) {
         sendData({
           temperature: Math.floor(data.locations[0].currentWeather.temperature),
-          condition: findWeatherConditionName(
-            WeatherCondition,
-            data.locations[0].currentWeather.weatherCondition
-          ),
+          condition: findWeatherConditionName(data.locations[0].currentWeather.weatherCondition),
           conditionCode: data.locations[0].currentWeather.weatherCondition,
           location: data.locations[0].name,
           unit: data.temperatureUnit,
@@ -66,15 +63,112 @@ function sendData(data) {
 }
 
 /**
- * Parses weather condition text.
- * @param {*} WeatherCondition
- * @param {*} conditionCode
- * @returns
+ * Determines name value to be displayed for current weather condition.
+ * @param {*} conditionCode 
+ * @returns 
  */
-function findWeatherConditionName(WeatherCondition, conditionCode) {
-  for (const condition of Object.keys(WeatherCondition)) {
-    if (conditionCode === WeatherCondition[condition]) return condition;
+function findWeatherConditionName(conditionCode) {
+  let name;
+  switch (conditionCode) {
+    case 1:
+      name = "Sunny";
+      break;
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+      name = "Some Sun";
+      break;
+    case 7:
+      name = "Cloudy";
+      break;
+    case 8:
+      name = "Overcast";
+      break;
+    case 11:
+      name = "Fog";
+      break;
+    case 12:
+    case 13:
+    case 14:
+      name = "Showers";
+      break;
+    case 15:
+    case 16:
+    case 17:
+      name = "Storms";
+      break;
+    case 18:
+      name = "Rain";
+      break;
+    case 19:
+    case 20:
+    case 21:
+      name = "Flurries";
+      break;
+    case 22:
+    case 23:
+      name = "Snow";
+      break;
+    case 24:
+      name = "Ice";
+      break;
+    case 25:
+      name = "Sleet";
+      break;
+    case 26:
+      name = "Freezing Rain";
+      break;
+    case 29:
+      name = "Rain + Snow";
+      break;
+    case 30:
+      name = "Hot";
+      break;
+    case 31:
+      name = "Cold";
+      break;
+    case 32:
+      name = "Windy";
+      break;
+    case 33:
+      name = "Clear Night";
+      break;
+    case 34:
+      name = "Mostly Clear";
+      break;
+    case 35:
+      name = "Cloudy Night";
+      break;
+    case 36:
+      name = "Clouds";
+      break;
+    case 37:
+      name = "Hazy Moon";
+      break;
+    case 38:
+      name = "Mostly Cloudy";
+      break;
+    case 39:
+    case 40:
+      name = "Showers";
+      break;
+    case 41:
+    case 42:
+      name = "Storms";
+      break;
+    case 43:
+      name = "Flurries";
+      break;
+    case 44:
+      name = "Snow";
+      break;
+    default:
+      name = "";
+      console.warn("Unexpected weather condition code found: " + conditionCode);
   }
+  return name;
 }
 
 if (companion.permissions.granted("access_location")) {

@@ -52,7 +52,7 @@ newfile.initialize((data) => {
   // fresh weather file received
   if (appbit.permissions.granted("access_location")) {
 
-    //conditionLabel.text = `${data.condition}`;
+    conditionLabel.text = `${data.condition}`;
     locationLabel.text = truncate(data.location, 12);
     celsiusLabel.text = `${data.temperature}`;
     fahrenheitLabel.text = toFahrenheit(data);
