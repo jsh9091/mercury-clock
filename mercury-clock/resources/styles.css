@@ -76,7 +76,7 @@
   text-length: 80;
   text-anchor: middle;
   x: 50%-5;
-  y: 51%;
+  y: 52%;
   fill: white;
 }
 
@@ -86,7 +86,7 @@
   text-length: 80;
   text-anchor: middle;
   x: 50%-5+4;
-  y: 51%+4;
+  y: 52%+4;
   fill: black;
 }
 
@@ -95,7 +95,7 @@
   text-length: 30;
   text-anchor: end;
   x: 100%-15;
-  y: 51%;
+  y: 52%;
 }
 
 #locationLabel {
