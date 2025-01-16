@@ -74,11 +74,19 @@ function findWeatherConditionName(conditionCode) {
       name = "Sunny";
       break;
     case 2:
+      name = "Mostly Sunny";
+      break;
     case 3:
+      name = "Partly Sunny";
+      break;
     case 4:
+      name = "Some Clouds";
+      break;
     case 5:
+      name = "Hazy Sun";
+      break;
     case 6:
-      name = "Some Sun";
+      name = "Mostly Cloudy";
       break;
     case 7:
       name = "Cloudy";
