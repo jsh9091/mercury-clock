@@ -134,6 +134,7 @@
 #celsiusLabel {
   x: "75";
   y: "311";
+  text-length: 80;
   text-anchor: middle;
   fill: black;
 }
@@ -141,6 +142,7 @@
 #fahrenheitLabel {
   x: "264";
   y: "311";
+  text-length: 80;
   text-anchor: middle;
   fill: black;
 }
